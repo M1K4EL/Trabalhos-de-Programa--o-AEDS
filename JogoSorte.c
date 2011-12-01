@@ -1,5 +1,5 @@
 /*
-UNIVERSIDADE ESTUDAR DE MONTES CLAROS
+UNIVERSIDADE ESTATUAL DE MONTES CLAROS
 Curso: Sistemas de Informação
 Periodo: 2º
 Academicos: Mikael Patrick e Mariane Luyara
