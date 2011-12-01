@@ -1,6 +1,9 @@
 /*
+UNIVERSIDADE ESTUDAR DE MONTES CLAROS
+Curso: Sistemas de InformaÃ§Ã£o
+Periodo: 2Âº
 Academicos: Mikael Patrick e Mariane Luyara
-Descrição: Jogo Numeros da Sorte
+DescriÃ§Ã£o: Jogo Numeros da Sorte
 Data de Desenvolvimento: 20/11/11
 */
 
@@ -51,7 +54,7 @@ typedef struct no {
 //---------------------------------- ESTRUTURAS EM GERAL - FIM ---------------------------------------------------------------------------
 
 
-//--------------------------------- PROTOTIPOS DE FUNÇÕES - INICIO -----------------------------------------------------------------------
+//--------------------------------- PROTOTIPOS DE FUNï¿½ï¿½ES - INICIO -----------------------------------------------------------------------
 
 //Quick Sort Prototipos 
 void Ordena(int esq, int dir, TipoLista *Lista);
@@ -121,7 +124,7 @@ void GravarArquivoLista(Player x);
 //Diversas
 void Logo();
 
-//----------------------------- FUNÇÃO PRINCIPAL - INICIO -------------------------------------------------------------------------------
+//----------------------------- FUNÃ‡ÃƒO PRINCIPAL - INICIO ---------------------------------------------------------------------------------
 
 int main ()
 {
@@ -129,32 +132,32 @@ int main ()
     system("title Jogo Numeros da Sorte - Mikael e Mariane");
     system("color F0");
 
-//---- GERANDO DIFERENTES SEMENTES PARA O RAND
+//---- GERANDO DIFERENTES SEMENTES PARA O RAND -------------------------------------------------------------------------------------------------
     srand (time(NULL));
 
-//---- VARIAVEIS COMUNS
+//---- VARIAVEIS COMUNS ------------------------------------------------------------------------------------------------------------------------
     int pontucao, nivel, jogada, ops, posicao=0, ach =0, esc =0;
 
-//--- VARIAVEIS CONTADORES
+//--- VARIAVEIS CONTADORES ---------------------------------------------------------------------------------------------------------------------
     int i, j, stop = 0, menu, pass, celulas = 0;
 
-//-- VARIAVEIS PARA ARQUIVO
+//--- VARIAVEIS PARA ARQUIVO -------------------------------------------------------------------------------------------------------------------
     FILE *score, *lista;
     char string_tmp[100], caractere[10];
 
-//-- VARIAVEIS PARA LISTA
+//--- VARIAVEIS PARA LISTA ---------------------------------------------------------------------------------------------------------------------
     Player Jogador, Player1, Play;
     TipoLista Numeros, Jogo;
     Apontador Aux;
 
-//-- VARIAVEIS ARVORE SBB e HASH
+//--- VARIAVEIS ARVORE SBB e HASH --------------------------------------------------------------------------------------------------------------
     ApontadorNo Score_Arvore;
     ApontadorNo Nome_Arvore;
     TipoLista Score_Hash[MAX];
     TipoLista Nome_Hash[MAX];
     int pos;
 
-//-- INICIALIZANDO LISTA DUPLAMENTE, ARVORE SBB E A TABELA HASH
+//--- INICIALIZANDO LISTA DUPLAMENTE, ARVORE SBB E A TABELA HASH -------------------------------------------------------------------------------
      for(i=0; i<MAX; i++)
      { //TABELA HASH
         IniciarLista(&Score_Hash[i]);
@@ -168,7 +171,7 @@ int main ()
     
     Aux = Numeros.primeiro->prox;
       
-//-- MENU PRINCIPAL
+//--- MENU PRINCIPAL --------------------------------------------------------------------------------------------------------------------------------
 
     Logo();
     system ("cls");
@@ -192,8 +195,11 @@ int main ()
 
         switch (menu)
         {
+        	
+       // --- OPÃ‡ÃƒO NIVEL DE DIFILCUDADE DO JOGO ----------------------------------------------------------------------- 	
+            
             case 1:
-                    system ("cls"); //--Seleção Do Nivel
+                    system ("cls"); //--SeleÃ§Ã£o Do Nivel
                     for (i = 0; i< 80; i++) printf ("%c", 205);
                     printf ("\t\t\t          Escolha Um Nivel de Dificuldade     \n");
                     for (i = 0; i< 80; i++) printf ("%c", 205);
@@ -867,6 +873,8 @@ int main ()
                     stop = 1;
                     system ("cls");
                     break;
+                    
+            //--- OPÃ‡ÃƒO PARA A PESQUISA NO RANK POR SBB (NOME/SCORE) E HASH (NOME/SCORE) -------------------------------         
 
             case 2:
                     system ("cls");
@@ -881,7 +889,8 @@ int main ()
                     printf ("\n\nDigite o Numero da Opcao: ");
                     scanf ("%d",&ops);
                     
-                    //--PESQUISA POR NOME PELA SBB
+                    //--- PESQUISA POR NOME PELA SBB ------------------------------------------------------------------
+                    
                     if (ops == 1)
                     {
                             printf("\n\nDigite o nome que deseja encontrar no Rank: "); 
@@ -906,7 +915,7 @@ int main ()
                             }
                     }
                     
-                    //--- PESQUISA POR NOME HASH
+                    //--- PESQUISA POR NOME HASH ----------------------------------------------------------------------
                     
                     else if (ops == 2)
                     {
@@ -920,7 +929,7 @@ int main ()
                         posicao=0;        
                     }
                     
-                    //--- PESQUISA POR SCORE SBB
+                    //--- PESQUISA POR SCORE SBB ----------------------------------------------------------------------
                     
                     else if (ops == 3)
                     {
@@ -943,7 +952,9 @@ int main ()
                                    }
                           }
                       }
-                      else if (ops == 4) //
+                      
+                      //--- PESQUISA POR SCORE HASH --------------------------------------------------------------------
+                      else if (ops == 4)
                       {
                            printf("\n\n\nDigite o Score (1 a 8) Que Deseja Encontrar No Rank: ");
                            fflush(stdin);
@@ -1023,7 +1034,7 @@ int main ()
     return 0;
 }
 
-//--- FUNÇÕES DA LISTA
+//--FUNÃ‡Ã•ES DA LISTA DUPLAMENTE ENCADEADA--------------------------------------------------------------------------------------------------------------
 void IniciarLista(TipoLista *Lista){
     Lista -> primeiro = (Apontador)malloc(sizeof(Celula));
     Lista -> primeiro -> prox = NULL;
@@ -1092,7 +1103,7 @@ void ImprimeLista (TipoLista Lista){
 }
 
 
-//--- QUICKSORT FUNÇÕES
+//--QUICKSORT FUNÃ‡Ã•ES-------------------------------------------------------------------------------------------------------------------------
 int ContarCelulas (TipoLista Lista){
     int i=0;
     Apontador aux;
@@ -1185,7 +1196,7 @@ void Particao(int esq, int dir, int *i, int *j, TipoLista *Lista){
 
 }
 
-//--- ARVORE SBB FUNÇÕES
+//--ARVORE SBB FUNÃ‡Ã•ES-------------------------------------------------------------------------------------------------------------------------
 void DesalocaArvore(ApontadorNo *No){
     if((*No) == NULL){
        return;
@@ -1337,7 +1348,7 @@ void Antecessor(ApontadorNo q, ApontadorNo *r, short *Fim) {
     *Fim = TRUE;
 }
 
-//-- ARVORE SBB PESQUISA POR SCORE
+//--ARVORE SBB PESQUISA POR SCORE-----------------------------------------------------------------------------------------------------------------
 void IRetira(Player x, ApontadorNo *Ap, short *Fim) {
   No *Aux;
   if (*Ap == NULL) {
@@ -1549,7 +1560,7 @@ void Pos_Ordem(ApontadorNo No){
     return;
 }
 
-//--- ARVORE SBB PARA PESQUISA POR NOME
+//--ARVORE SBB PARA PESQUISA POR NOME-------------------------------------------------------------------------------------------------------------------
 void IInsere_nome(Player x, ApontadorNo *Ap, Inclinacao *IAp, short *Fim) {
   if (*Ap == NULL) {
   	*Ap = (ApontadorNo)malloc(sizeof(No));
@@ -1767,7 +1778,7 @@ void Pos_Ordem_nome(ApontadorNo No){
     return;
 }
 
-//--- TABELA HASH FUNÇÕES
+//--TABELA HASH FUNÃ‡Ã•ES--------------------------------------------------------------------------------------------------------------
 void PesquisaHash(TipoLista *Hash, Player *x){
     Apontador aux;
     int i;
@@ -1867,7 +1878,7 @@ void GravarArquivoLista(Player x){
 
     fflush(stdin);
 
-    if((arquivo=fopen("Ficha dos Candidatos.txt","a"))!=NULL){
+    if((arquivo=fopen("Rank.txt","a"))!=NULL){
 
         fprintf(arquivo,"\n%s",x.nome);
         fprintf(arquivo,"\n%d",x.score);
@@ -1879,7 +1890,7 @@ void GravarArquivoLista(Player x){
     return;
 }
 
-//--LOGO
+//--LOGO----------------------------------------------------------------------------------------------------------------------------------------
 void Logo ()
 {            
 printf ("\t\t     J O G O   N U M E R O S  D A\n\n");                                                    
